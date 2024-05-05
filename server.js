@@ -11,7 +11,7 @@ const Password=process.env.PG_PASSWORD
 const Host=process.env.PG_HOST
 const Port=process.env.PG_PORT
 const client = new pg.Client(`postgresql:${User}${Password}@${Host}:${Port}/${Database}`)
-const port = 8080;
+const PORT = 8080;
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -182,8 +182,8 @@ function pageErrorHandler(err,req,res,next) {
 
 client.connect()
 .then(()=>{
-    app.listen(port,()=>{
-    console.log(`server is running ${port}`)
+    app.listen(PORT,()=>{
+    console.log(`server is running ${PORT}`)
 })
 })
 
