@@ -5,7 +5,12 @@ const pg = require('pg');
 const cors = require('cors');
 require('dotenv').config();
 const ApiKey=process.env.Key;
-const client = new pg.Client('postgresql://localhost:5432/labs')
+const Database=process.env.PG_DATABASE
+const User=process.env.PG_USER
+const Password=process.env.PG_PASSWORD
+const Host=process.env.PG_HOST
+const Port=process.env.PG_PORT
+const client = new pg.Client(`postgresql:${User}${Password}@${Host}:${Port}/${Database}`)
 const port = 8080;
 const app = express();
 app.use(cors());
