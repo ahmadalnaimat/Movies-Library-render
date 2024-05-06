@@ -4,17 +4,17 @@ const moviesdata= require('./Movie Data/data.json');
 const pg = require('pg');
 const cors = require('cors');
 require('dotenv').config();
+const app = express();
+app.use(express.json());
+app.use(cors());
 const ApiKey=process.env.Key;
 const Database=process.env.PG_DATABASE
 const User=process.env.PG_USER
 const Password=process.env.PG_PASSWORD
 const Host=process.env.PG_HOST
 const Port=process.env.PG_PORT
-const client = new pg.Client(`postgresql:${User}${Password}@${Host}:${Port}/${Database}`)
-const PORT = 8080;
-const app = express();
-app.use(cors());
-app.use(express.json());
+const client = new pg.Client(`postgresql://${User}:${Password}@${Host}:${Port}/${Database}`)
+const PORT = 8081;
 
 app.get('/',Homehandler)
 app.get('/favorite',Favoritehandler)
